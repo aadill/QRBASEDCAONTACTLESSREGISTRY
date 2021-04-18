@@ -8,13 +8,15 @@ require('dotenv').config({
     path: "./config/config.env"
 })
 
+connectDB()             //Mongo DB Connection
+
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());        //running api in reactjs from server without any error while json transferring
 app.use(morgan('dev'))  //Give Information about each request
 
-connectDB()             //Mongo DB Connection
 
 //Load all route
 const authRouter = require('./routes/auth.route');
